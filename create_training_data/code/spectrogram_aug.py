@@ -287,7 +287,30 @@ class Spectrogram():
         
         self.save_path = path
         return self.spect.save(path)
+    
+    
+    def apply(self, func, **kwargs):
+        '''
+        Apply a manipulation function
+        
+        Enable method chaining. 
+        
+        Args:
+            func: the function to apply.
+            kwargs: keyword arguments
+                for func
+        
+        Returns:
+            the filtered function 
+        '''
+        
+        if not callable(func):
+            raise ValueError(f"desired func '{func}' not callable")
             
+        if func.__name__ not in self.possible_manipulations:
+            raise ValueError(f"desired func '{func}' not in list of accepted audio manipulations")
+        
+        return func(self, **kwargs)
         
         
 
