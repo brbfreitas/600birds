@@ -180,7 +180,7 @@ We made a venv using these instructions.
 module purge
 module load python/3.7.0 venv/wrap
 mkvirtualenv tf-2.0.0-gpu # or make a different virtualenv for a cpu if you feel like you're waiting too long
-pip install /ihome/crc/build/tensorflow/tensorflow-2.0.0/whl_file/<optional subdirectory for cpu version: cpu/>tensorflow-2.0.0-cp37-cp37m-linux_x86_64.whl pandas pillow scipy <librosa -- this was not installed in the initial run>
+pip install /ihome/crc/build/tensorflow/tensorflow-2.0.0/whl_file/<optional subdirectory for cpu version: cpu/>tensorflow-2.0.0-cp37-cp37m-linux_x86_64.whl pandas pillow scipy librosa sklearn
 ```
 
 To work in this environment, need to be in a GPU machine and need to load the cuda module that corresponds to it. BUT this is already in the slurm script, so 
