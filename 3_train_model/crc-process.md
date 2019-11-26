@@ -198,18 +198,18 @@ Edit the `labels.csv` file which Sam created to transform the labels into the sa
 
 Inside `predictions` are two files, `*.py` and `*.slurm`. Copy these into my directory and edit the files as follows:
 * PYTHON file:
-        1. point to model
-        2. point to RECREATED labels file (see above). Do a test dataset first, then the real one.
-        3. change the python file to put the predictions in an output file (possibly dump them to a csv). They are currently just stored in a variable. It'll be a numpy array. We think the structure is as follows. Outer list: how many batches were run. First inner list: 32 or 64. Second inner list: each file's predictions, length 508. Can flatten the top two layers. If flattened, should be the same order as the files. Ultimate size will be 4260 (number of files) x 508 (number of classes)
+       * point to model
+       * point to RECREATED labels file (see above). Do a test dataset first, then the real one.
+       * change the python file to put the predictions in an output file (possibly dump them to a csv). They are currently just stored in a variable. It'll be a numpy array. We think the structure is as follows. Outer list: how many batches were run. First inner list: 32 or 64. Second inner list: each file's predictions, length 508. Can flatten the top two layers. If flattened, should be the same order as the files. Ultimate size will be 4260 (number of files) x 508 (number of classes)
         
 * SLURM file:
-        * Modify to point to the correct Python file, and change any other things e.g.
-        * OPTIONAL: 
-                * Can also change the name of the Python file (`eval.py`) and the out file.
-                * Can change it to run on a CPU 
-                     * make new venv as described above
-                     * delete all three lines 8, 9, 10 in the slurm script
-                     * change the workon environment to `cpu`
+       * Modify to point to the correct Python file, and change any other things e.g.
+       * OPTIONAL: 
+         * Can also change the name of the Python file (`eval.py`) and the out file.
+         * Can change it to run on a CPU 
+              * make new venv as described above
+              * delete all three lines 8, 9, 10 in the slurm script
+              * change the workon environment to `cpu`
 
 OPTIONAL: Change partition because v100 is slow (look for anything not showing mix on `sinfo -M gpu`)
 * Change in slurm file: Change the actual partition `--partition=v100`
