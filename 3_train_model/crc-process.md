@@ -122,7 +122,13 @@ So we killed Models 1 and 3, and submitted:
        module load python/anaconda3.6-5.2.0 venv/wrap cuda/10.0.130
        workon tf-1.14.0-gpu
 
+* **Model 5**, a failed model on titanx partition. Sees 50% of the dataset per epoch. Virtual environment loaded in the slurm script via the following commands:
 
+       module purge
+       module load python/anaconda3.6-5.2.0 venv/wrap cuda/10.0.130
+       workon tf-1.14.0-gpu
+
+* **Model 6**, a restart of Model 2 that begins by loading its `epoch-4.h5`
 
 #### Making these models:
 First, I copied from Barry's files the following: Python file, slurm file, a needed dependency (`sigmoid_inception_v3.py`), and the labels file. The following modifications were required to run the file in this location:
